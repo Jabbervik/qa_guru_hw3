@@ -14,10 +14,10 @@ def brows_open():
     yield
     browser.quit()
 
-def test_search_result_links(brows_open):
+def test_search_result_links(setting_browser, brows_open):
     browser.element('[name="q"]').should(be.blank).type('yashaka/selene').press_enter()
     browser.element('html').should(have.text('Selene: User-Oriented Web UI Browser Tests in Python'))
 
-def test_search_result_unsuccessful(brows_open):
+def test_search_result_unsuccessful(setting_browser, brows_open):
     browser.element('[name="q"]').clear().type('рдаимдлоываагшдрашдтадлотаидлвыимдф').press_enter()
     browser.element('html').should(have.text('No results found for'))
